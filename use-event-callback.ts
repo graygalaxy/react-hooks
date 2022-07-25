@@ -1,4 +1,5 @@
-import { useLayoutEffect, useCallback, useRef } from 'react'
+import { useCallback, useRef } from 'react'
+import useIsomorphicEffect from './use-isomorphic-effect'
 
 /**
  * Simplified version of useCallback in react
@@ -11,7 +12,7 @@ export function useEventCallback<A extends unknown[], R>(
 		throw new Error('Cannot call an event handler while rendering.')
 	})
 
-	useLayoutEffect(() => {
+	useIsomorphicEffect(() => {
 		ref.current = callback
 	})
 
