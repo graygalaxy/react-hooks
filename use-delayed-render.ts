@@ -6,7 +6,16 @@ interface Options {
 	onUnmount?: () => void
 }
 
-export function useDelayedRender(active: boolean = false, options: Options = {}) {
+/**
+ * hook for delaying render & unmount
+ * @param { boolean } active
+ * @param { Options } options
+ * @returns
+ */
+export function useDelayedRender(
+	active: boolean = false,
+	options: Options = {}
+) {
 	const mounted = useRef(active)
 	const rendered = useRef(false)
 	const renderTimer = useRef<NodeJS.Timeout | null>(null)
